@@ -12,7 +12,8 @@ app.use('*', (req, res) => {
   res.sendStatus(400)
 })
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-  console.log(`Shipping-API is running on port: ${PORT}`)
+const HOST = process.env.SHIPPING_HOST || '0.0.0.0'
+const PORT = process.env.SHIPPING_PORT || 8082
+app.listen(PORT, HOST, () => {
+  console.log(`Shipping-API running on HOST: ${HOST} PORT: ${PORT}`)
 })
