@@ -1,5 +1,5 @@
 Dockerfile
-docker.build-image.sh
+build.docker-image.sh
 .git/
 .gitignore
 node_modules
