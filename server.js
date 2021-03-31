@@ -4,9 +4,14 @@ const express = require('express')
 const cors = require('cors')
 
 const app = express()
-require('./src/routes/index')(app)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'HEAD,GET,PUT,POST,PATCH,DELETE,OPTIONS')
+  app.use(cors())
+  next()
+})
 
-app.use(cors())
+require('./src/routes/index')(app)
 
 app.use('*', (req, res) => {
   res.sendStatus(400)
